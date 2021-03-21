@@ -22,6 +22,7 @@ public class Slot : MonoBehaviour
     {
         RemoveItem();
         CurrentItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Item>();
+        CurrentItem.transform.localPosition = Vector3.zero;
     }
     
     public void RemoveItem()

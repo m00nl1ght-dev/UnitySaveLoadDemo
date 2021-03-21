@@ -25,28 +25,32 @@ public class ItemInfoUI : MonoBehaviour
     // Event listener, called when selected item slot changed
     public void OnSelectionChanged()
     {
-        // Reset UI content
+        // Reset UI
         descriptionText.text = "";
+        defDropdown.interactable = true;
         
         // First check if any slot is selected
         if (selectedItemSlotVar.Slot != null)
         {
-            defDropdown.interactable = true;
-            
-            // If slot is not empty, set item texts
             var item = selectedItemSlotVar.Slot.CurrentItem;
             if (item != null && item.Def != null)
             {
+                // Slot is not empty, set item texts
                 nameText.text = item.Def.itemName;
+                defDropdown.value = itemDefList.itemDefs.IndexOf(item.Def) + 1;
                 descriptionText.text = item.Def.description;
             }
             else
             {
+                // Slot is empty, set defaults
+                defDropdown.value = 0;
                 nameText.text = "Selected slot is empty.";
             }
         }
         else
         {
+            // No slot is selected, set defaults
+            defDropdown.value = 0;
             defDropdown.interactable = false;
             nameText.text = "No slot selected.";
         }
@@ -69,7 +73,7 @@ public class ItemInfoUI : MonoBehaviour
                 var defId = defDropdown.options[index].text;
                 var itemDef = itemDefList.LookupById[defId];
                 selectedItemSlotVar.Slot.PutNewItem();
-                selectedItemSlotVar.Slot.CurrentItem.Def = itemDef;
+                selectedItemSlotVar.Slot.CurrentItem.UpdateDef(itemDef);
                 selectionChangedEvent.Raise();
             }
         }
