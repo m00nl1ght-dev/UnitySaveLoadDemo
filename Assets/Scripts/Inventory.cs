@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    // Inspector editable fields
     public int slotCount = 20;
-    public GameObject slotPrefab;
     public Color slotUnselectedColor;
     public Color slotSelectedColor;
+    public GameObject slotPrefab;
     public ItemSlotVar selectedItemSlotVar;
 
+    // Runtime fields
     private Slot[] _slots;
     private Slot _lastSelected;
 
@@ -19,16 +21,17 @@ public class Inventory : MonoBehaviour
         {
             var slot = Instantiate(slotPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Slot>();
             slot.gameObject.name = "Slot_" + i;
-            slot.Image.color = slotUnselectedColor;
+            slot.image.color = slotUnselectedColor;
             _slots[i] = slot;
         }
     }
 
+    // Event listener, called when selected item slot changed
     public void OnSelectionChanged()
     {
         // Update background colors of the old and new selected slots
-        if (_lastSelected != null) _lastSelected.Image.color = slotUnselectedColor;
-        selectedItemSlotVar.Slot.Image.color = slotSelectedColor;
+        if (_lastSelected != null) _lastSelected.image.color = slotUnselectedColor;
+        selectedItemSlotVar.Slot.image.color = slotSelectedColor;
         _lastSelected = selectedItemSlotVar.Slot;
     }
 
