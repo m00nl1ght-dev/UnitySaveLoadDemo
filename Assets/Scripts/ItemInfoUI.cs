@@ -21,7 +21,7 @@ public class ItemInfoUI : MonoBehaviour
     {
         // Add all item defs to the dropdown
         var defOptions = new List<Dropdown.OptionData> {new Dropdown.OptionData("Empty")};
-        defOptions.AddRange(itemDefList.itemDefs.Select(d => new Dropdown.OptionData(d.defId)).ToList());
+        defOptions.AddRange(itemDefList.ItemDefs.Select(d => new Dropdown.OptionData(d.DefId)).ToList());
         defDropdown.options = defOptions;
         OnSelectionChanged();
     }
@@ -43,14 +43,14 @@ public class ItemInfoUI : MonoBehaviour
             if (item != null && item.Def != null)
             {
                 // Slot is not empty, set item texts
-                nameText.text = item.Def.itemName;
-                defDropdown.value = itemDefList.itemDefs.IndexOf(item.Def) + 1;
-                descriptionText.text = item.Def.description;
-                if (item.Def.maxStackSize > 1)
+                nameText.text = item.Def.ItemName;
+                defDropdown.value = itemDefList.ItemDefs.IndexOf(item.Def) + 1;
+                descriptionText.text = item.Def.Description;
+                if (item.Def.MaxStackSize > 1)
                 {
                     // Item is stackable, enable slider and set values
-                    stackSizeSlider.maxValue = item.Def.maxStackSize;
-                    sliderLabelRight.text = item.Def.maxStackSize.ToString();
+                    stackSizeSlider.maxValue = item.Def.MaxStackSize;
+                    sliderLabelRight.text = item.Def.MaxStackSize.ToString();
                     stackSizeSlider.value = item.StackSize;
                     stackSizeSlider.gameObject.SetActive(true);
                     sliderLabelTop.text = "Stack Size";

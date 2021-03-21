@@ -18,7 +18,7 @@ public class Item : MonoBehaviour, IPersistent<ItemData>
         set
         {
             _def = value;
-            image.sprite = value.itemSprite;
+            image.sprite = value.ItemSprite;
         }
     }
 
@@ -36,7 +36,7 @@ public class Item : MonoBehaviour, IPersistent<ItemData>
     {
         return new ItemData
         {
-            DefId = _def.defId, 
+            DefId = _def.DefId, 
             StackSize = _stackSize
         };
     }

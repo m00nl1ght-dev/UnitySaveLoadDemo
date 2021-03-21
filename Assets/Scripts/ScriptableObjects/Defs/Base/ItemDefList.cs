@@ -6,19 +6,24 @@ using UnityEngine;
 public class ItemDefList : ScriptableObject
 {
     // Inspector editable list of all item definitions
-    public List<ItemDef> itemDefs;
+    [SerializeField] 
+    private List<ItemDef> itemDefs;
 
-    // Runtime only, mapped to IDs for faster lookup
-    public IReadOnlyDictionary<string, ItemDef> LookupById { get; private set; }
+    // For runtime access (read-only)
+    public IList<ItemDef> ItemDefs { get; private set; }
+    public IDictionary<string, ItemDef> LookupById { get; private set; }
 
     private void OnEnable()
     {
-        // Create the id map on start
+        // Create read-only list for runtime access
+        ItemDefs = new ReadOnlyCollection<ItemDef>(itemDefs);
+        
+        // Map all defs to IDs for faster lookup
         var dict = new Dictionary<string, ItemDef>();
         LookupById = new ReadOnlyDictionary<string, ItemDef>(dict);
         foreach (var itemDef in itemDefs)
         {
-            dict.Add(itemDef.defId, itemDef);
+            dict.Add(itemDef.DefId, itemDef);
         }
     }
 }
