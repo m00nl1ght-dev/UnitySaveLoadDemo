@@ -168,5 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7aa30fadc34432bcd2bdcdf18140c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDefList: {fileID: 11400000, guid: a753efeba9e9cb8438a24e8687ff30d2, type: 2}
   image: {fileID: 6931004867475262941}
   stackSizeText: {fileID: 2509257149810235864}
