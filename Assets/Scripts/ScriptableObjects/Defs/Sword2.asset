@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3743759ad9bb49d386316c273606f34a, type: 3}
   m_Name: Sword2
   m_EditorClassIdentifier: 
-  defId: 
-  itemName: 
-  description: 
-  itemSprite: {fileID: 0}
+  defId: Sword2
+  itemName: Flame Sword
+  description: Just a sword, but with flame.
+  itemSprite: {fileID: 21300000, guid: 8647886fefa7ee04db16618bb6a17ba7, type: 3}
+  maxStackSize: 10

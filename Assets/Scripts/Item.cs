@@ -5,13 +5,29 @@ public class Item : MonoBehaviour
 {
     // Inspector editable fields
     public Image image;
+    public Text stackSizeText;
     
     // Runtime fields
-    public ItemDef Def { get; private set; }
+    private ItemDef _def;
+    private int _stackSize = 1;
 
-    public void UpdateDef(ItemDef def)
+    public ItemDef Def
     {
-        Def = def;
-        image.sprite = def.itemSprite;
+        get => _def;
+        set
+        {
+            _def = value;
+            image.sprite = value.itemSprite;
+        }
+    }
+
+    public int StackSize
+    {
+        get => _stackSize;
+        set
+        {
+            _stackSize = value;
+            stackSizeText.text = value > 1 ? ("x" + value) : "";
+        }
     }
 }

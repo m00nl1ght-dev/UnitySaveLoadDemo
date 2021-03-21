@@ -12,6 +12,10 @@ public class ItemInfoUI : MonoBehaviour
     public Dropdown defDropdown;
     public Text nameText;
     public Text descriptionText;
+    public Slider stackSizeSlider;
+    public Text sliderLabelTop;
+    public Text sliderLabelLeft;
+    public Text sliderLabelRight;
 
     private void Start()
     {
@@ -25,10 +29,13 @@ public class ItemInfoUI : MonoBehaviour
     // Event listener, called when selected item slot changed
     public void OnSelectionChanged()
     {
-        // Reset UI
+        // Reset UI to default state
         descriptionText.text = "";
         defDropdown.interactable = true;
-        
+        stackSizeSlider.gameObject.SetActive(false);
+        stackSizeSlider.value = 1f;
+        sliderLabelTop.text = "Not stackable.";
+
         // First check if any slot is selected
         if (selectedItemSlotVar.Slot != null)
         {
@@ -39,12 +46,22 @@ public class ItemInfoUI : MonoBehaviour
                 nameText.text = item.Def.itemName;
                 defDropdown.value = itemDefList.itemDefs.IndexOf(item.Def) + 1;
                 descriptionText.text = item.Def.description;
+                if (item.Def.maxStackSize > 1)
+                {
+                    // Item is stackable, enable slider and set values
+                    stackSizeSlider.maxValue = item.Def.maxStackSize;
+                    sliderLabelRight.text = item.Def.maxStackSize.ToString();
+                    stackSizeSlider.value = item.StackSize;
+                    stackSizeSlider.gameObject.SetActive(true);
+                    sliderLabelTop.text = "Stack Size";
+                }
             }
             else
             {
                 // Slot is empty, set defaults
                 defDropdown.value = 0;
                 nameText.text = "Selected slot is empty.";
+                sliderLabelTop.text = "";
             }
         }
         else
@@ -53,6 +70,7 @@ public class ItemInfoUI : MonoBehaviour
             defDropdown.value = 0;
             defDropdown.interactable = false;
             nameText.text = "No slot selected.";
+            sliderLabelTop.text = "";
         }
     }
 
@@ -73,9 +91,20 @@ public class ItemInfoUI : MonoBehaviour
                 var defId = defDropdown.options[index].text;
                 var itemDef = itemDefList.LookupById[defId];
                 selectedItemSlotVar.Slot.PutNewItem();
-                selectedItemSlotVar.Slot.CurrentItem.UpdateDef(itemDef);
+                selectedItemSlotVar.Slot.CurrentItem.Def = itemDef;
                 selectionChangedEvent.Raise();
             }
+        }
+    }
+
+    public void OnStackSizeSliderChanged(float value)
+    {
+        if (!stackSizeSlider.gameObject.activeSelf) return;
+        // First check if any slot is selected and has an item
+        if (selectedItemSlotVar.Slot != null && selectedItemSlotVar.Slot.CurrentItem != null)
+        {
+            // Set new stack size for item
+            selectedItemSlotVar.Slot.CurrentItem.StackSize = (int) value;
         }
     }
 }
