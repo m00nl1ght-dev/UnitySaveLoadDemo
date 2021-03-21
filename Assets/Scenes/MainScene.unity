@@ -203,7 +203,7 @@ MonoBehaviour:
   slotUnselectedColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   slotSelectedColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   slotPrefab: {fileID: 4975167446836892167, guid: a374b6c02a9027a49965fefff7c33ae0, type: 3}
-  selectedItemSlotVar: {fileID: 11400000, guid: 13aeec4c7d8493341ad70bc76cc98002, type: 2}
+  selectedInventorySlotVar: {fileID: 11400000, guid: 13aeec4c7d8493341ad70bc76cc98002, type: 2}
 --- !u!114 &7424483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDefList: {fileID: 11400000, guid: a753efeba9e9cb8438a24e8687ff30d2, type: 2}
-  selectedItemSlotVar: {fileID: 11400000, guid: 13aeec4c7d8493341ad70bc76cc98002, type: 2}
+  selectedInventorySlotVar: {fileID: 11400000, guid: 13aeec4c7d8493341ad70bc76cc98002, type: 2}
   selectionChangedEvent: {fileID: 11400000, guid: e60b067f1326de8498227c4f065aed0c, type: 2}
   defDropdown: {fileID: 1533211997}
   nameText: {fileID: 1885518584}
