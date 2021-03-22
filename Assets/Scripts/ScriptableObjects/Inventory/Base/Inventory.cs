@@ -52,7 +52,7 @@ public class Inventory : ScriptableObject, IPersistent<InventoryData>
         for (int i = 0; i < Math.Min(slotCount, data.inventorySlots.Length); i++)
         {
             var itemData = data.inventorySlots[i];
-            if (itemData != null)
+            if (itemData != null && itemData.defId.Length > 0)
             {
                 var item = new Item(this);
                 item.Load(itemData);
