@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AllItemDefs
   m_EditorClassIdentifier: 
   itemDefs:
-  - {fileID: 11400000, guid: 8c91b85da0c4fb74197b1cafa8ee1eac, type: 2}
-  - {fileID: 11400000, guid: e4c161d6daf6ea14ea18b05bf71678ca, type: 2}
-  - {fileID: 11400000, guid: 36124c6662af74b4a840633e066b2b19, type: 2}
+  - {fileID: 11400000, guid: b8194efc2552bc64381b0b2facc3b95f, type: 2}
+  - {fileID: 11400000, guid: 6672db352129043439d8c7b34391216c, type: 2}
+  - {fileID: 11400000, guid: 8bd5e2d9f1e06a3499ef05eda85c2538, type: 2}
+  - {fileID: 11400000, guid: 7c0e1edde6875a24f8927f59cd0467d5, type: 2}
+  - {fileID: 11400000, guid: 51c44563c3fce314ab79625e55c18d12, type: 2}

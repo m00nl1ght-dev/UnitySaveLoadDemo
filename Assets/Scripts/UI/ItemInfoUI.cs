@@ -17,6 +17,7 @@ public class ItemInfoUI : MonoBehaviour
     public Text sliderLabelTop;
     public Text sliderLabelLeft;
     public Text sliderLabelRight;
+    public Text additionalInfoText;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class ItemInfoUI : MonoBehaviour
         stackSizeSlider.gameObject.SetActive(false);
         stackSizeSlider.value = 1f;
         sliderLabelTop.text = "Not stackable.";
+        additionalInfoText.text = "";
 
         // First check if any slot is selected
         if (selectedSlotVar.Value >= 0)
@@ -47,6 +49,7 @@ public class ItemInfoUI : MonoBehaviour
                 nameText.text = item.Def.ItemName;
                 defDropdown.value = itemDefList.ItemDefs.IndexOf(item.Def) + 1;
                 descriptionText.text = item.Def.Description;
+                additionalInfoText.text = item.Def.PrintAdditionalInfo();
                 if (item.Def.MaxStackSize > 1)
                 {
                     // Item is stackable, enable slider and set values

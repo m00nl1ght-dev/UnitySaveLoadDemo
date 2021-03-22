@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3743759ad9bb49d386316c273606f34a, type: 3}
-  m_Name: Sword1
+  m_Script: {fileID: 11500000, guid: 40e4110a106841f9ab727db06825bed5, type: 3}
+  m_Name: ShieldB
   m_EditorClassIdentifier: 
-  defId: Sword1
-  itemName: Basic Sword
-  description: Just a sword.
-  itemSprite: {fileID: 21300000, guid: 6a103d5c0cefadf4fb49e51b708b83ea, type: 3}
+  defId: ShieldB
+  itemName: Heavy Shield
+  description: A heavy shield.
+  itemSprite: {fileID: 21300000, guid: b4e4218b574d12045a2b68f0dd3508f4, type: 3}
   maxStackSize: 1
+  weight: 8
+  protectionMelee: 10
+  protectionRanged: 5
