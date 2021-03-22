@@ -1,5 +1,8 @@
+using System;
+
+[Serializable]
 public class ItemData
 {
-    public string DefId;
-    public int StackSize;
+    public string defId;
+    public int stackSize;
 }

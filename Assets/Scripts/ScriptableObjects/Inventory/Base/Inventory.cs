@@ -39,7 +39,7 @@ public class Inventory : ScriptableObject, IPersistent<InventoryData>
         return new InventoryData
         {
             // Fetch the save data for each item and put it into the inventory data
-            InventorySlots = _storedItems.Select(i => i?.Save()).ToArray()
+            inventorySlots = _storedItems.Select(i => i?.Save()).ToArray()
         };
     }
 
@@ -49,9 +49,9 @@ public class Inventory : ScriptableObject, IPersistent<InventoryData>
         // Get rid of existing items by creating a new array
         _storedItems = new Item[slotCount];
         // Put new items and restore the saved item data for each
-        for (int i = 0; i < Math.Min(slotCount, data.InventorySlots.Length); i++)
+        for (int i = 0; i < Math.Min(slotCount, data.inventorySlots.Length); i++)
         {
-            var itemData = data.InventorySlots[i];
+            var itemData = data.inventorySlots[i];
             if (itemData != null)
             {
                 var item = new Item(this);

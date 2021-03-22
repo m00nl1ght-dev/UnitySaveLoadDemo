@@ -54,7 +54,7 @@ public class InventorySlotUI : MonoBehaviour
     {
         if (ItemUI != null)
         {
-            Destroy(ItemUI);
+            Destroy(ItemUI.gameObject);
             ItemUI = null;
         }
     }

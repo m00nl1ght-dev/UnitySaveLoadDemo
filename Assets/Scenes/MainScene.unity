@@ -2757,6 +2757,7 @@ GameObject:
   - component: {fileID: 1351845021}
   - component: {fileID: 1351845023}
   - component: {fileID: 1351845024}
+  - component: {fileID: 1351845025}
   m_Layer: 5
   m_Name: ItemInfoUI
   m_TagString: Untagged
@@ -2862,6 +2863,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: e60b067f1326de8498227c4f065aed0c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1351845023}
+        m_TargetAssemblyTypeName: ItemInfoUI, Assembly-CSharp
+        m_MethodName: OnSelectionChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1351845025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351845019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf95b33861c4615ba24d7f57c9ae8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4a34f0eb40f142647912a51b5b81319f, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -3361,6 +3390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950d6b175d530c4585fae4a7fd1bcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveManager: {fileID: 11400000, guid: 04e72f67528921c458847f626a2e31f9, type: 2}
 --- !u!114 &1718497409
 MonoBehaviour:
   m_ObjectHideFlags: 0

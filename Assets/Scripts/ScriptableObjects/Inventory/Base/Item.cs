@@ -17,15 +17,15 @@ public class Item : IPersistent<ItemData>
     {
         return new ItemData
         {
-            DefId = Def.DefId, 
-            StackSize = StackSize
+            defId = Def.DefId, 
+            stackSize = StackSize
         };
     }
 
     // Restore a previously saved snapshot of this item's persistent data.
     public void Load(ItemData data)
     {
-        Def = Inventory.itemDefList.LookupById[data.DefId];
-        StackSize = data.StackSize;
+        Def = Inventory.itemDefList.LookupById[data.defId];
+        StackSize = data.stackSize;
     }
 }

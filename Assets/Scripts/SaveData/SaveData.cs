@@ -1,9 +1,11 @@
+using System;
 
 // Data container for all game data that needs to be saved.
+[Serializable]
 public class SaveData
 {
-    public InventoryData InventoryData;
-    // public PlayerData PlayerData;
-    // public WorldData WorldData;
+    public InventoryData inventoryData;
+    // public PlayerData playerData;
+    // public WorldData worldData;
     // ...
 }

@@ -1,4 +1,7 @@
+using System;
+
+[Serializable]
 public class InventoryData
 {
-    public ItemData[] InventorySlots;
+    public ItemData[] inventorySlots;
 }
