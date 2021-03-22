@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04154f2a1e7b40d286cf4048a42e98b1, type: 3}
-  m_Name: SelectedItemSlot
+  m_Script: {fileID: 11500000, guid: ea5604b6de474fbfbb5928d7e848560e, type: 3}
+  m_Name: MainInventory
   m_EditorClassIdentifier: 
+  itemDefList: {fileID: 11400000, guid: a753efeba9e9cb8438a24e8687ff30d2, type: 2}
+  slotCount: 20

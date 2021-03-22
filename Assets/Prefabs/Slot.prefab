@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e0986f4848313438516e89bff108ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedInventorySlotVar: {fileID: 11400000, guid: 13aeec4c7d8493341ad70bc76cc98002, type: 2}
+  selectedInventorySlotVar: {fileID: 11400000, guid: bb6ae4360bbcf724b9cc4e422658748a, type: 2}
   selectionChangedEvent: {fileID: 11400000, guid: e60b067f1326de8498227c4f065aed0c, type: 2}
   itemPrefab: {fileID: 6931004867475262947, guid: ee495bffd0491444bb54f24f1865fffc, type: 3}
-  image: {fileID: 4975167446836892217}
+  backgroundImage: {fileID: 4975167446836892217}

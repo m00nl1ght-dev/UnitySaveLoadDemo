@@ -7,7 +7,8 @@ public class ItemInfoUI : MonoBehaviour
 {
     // Inspector editable fields
     public ItemDefList itemDefList;
-    public InventorySlotVar selectedInventorySlotVar;
+    public Inventory inventory;
+    public IntVariable selectedSlotVar;
     public GameEvent selectionChangedEvent;
     public Dropdown defDropdown;
     public Text nameText;
@@ -37,9 +38,9 @@ public class ItemInfoUI : MonoBehaviour
         sliderLabelTop.text = "Not stackable.";
 
         // First check if any slot is selected
-        if (selectedInventorySlotVar.Slot != null)
+        if (selectedSlotVar.Value >= 0)
         {
-            var item = selectedInventorySlotVar.Slot.Item;
+            var item = inventory.GetItemInSlot(selectedSlotVar.Value);
             if (item != null && item.Def != null)
             {
                 // Slot is not empty, set item texts
@@ -77,12 +78,12 @@ public class ItemInfoUI : MonoBehaviour
     public void OnDefDropdownChanged(int index)
     {
         // First check if any slot is selected
-        if (selectedInventorySlotVar.Slot != null)
+        if (selectedSlotVar.Value >= 0)
         {
             if (index == 0)
             {
                 // Index 0 -> Dropdown set to "Empty", so remove the current item from the slot
-                selectedInventorySlotVar.Slot.RemoveItem();
+                inventory.RemoveItemInSlot(selectedSlotVar.Value);
                 selectionChangedEvent.Raise();
             }
             else
@@ -90,8 +91,7 @@ public class ItemInfoUI : MonoBehaviour
                 // Fetch the item def, then create a new item with that def and put it into the slot
                 var defId = defDropdown.options[index].text;
                 var itemDef = itemDefList.LookupById[defId];
-                selectedInventorySlotVar.Slot.PutNewItem();
-                selectedInventorySlotVar.Slot.Item.Def = itemDef;
+                inventory.PutNewItemIntoSlot(selectedSlotVar.Value, itemDef);
                 selectionChangedEvent.Raise();
             }
         }
@@ -99,12 +99,16 @@ public class ItemInfoUI : MonoBehaviour
 
     public void OnStackSizeSliderChanged(float value)
     {
-        if (!stackSizeSlider.gameObject.activeSelf) return;
-        // First check if any slot is selected and has an item
-        if (selectedInventorySlotVar.Slot != null && selectedInventorySlotVar.Slot.Item != null)
+        // First check if slider is active, slot is selected and has an item
+        if (stackSizeSlider.gameObject.activeSelf && selectedSlotVar.Value >= 0)
         {
-            // Set new stack size for item
-            selectedInventorySlotVar.Slot.Item.StackSize = (int) value;
+            var item = inventory.GetItemInSlot(selectedSlotVar.Value);
+            if (item != null)
+            {
+                // Set new stack size for item, and trigger update event
+                item.StackSize = (int) value;
+                selectionChangedEvent.Raise();
+            }
         }
     }
 }
